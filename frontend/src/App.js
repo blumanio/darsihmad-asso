@@ -92,7 +92,7 @@ function App() {
                 onClick={() => handleMarkerClick(p._id)}
                 style={{
                   fontSize: visualViewport.zoom * 7,
-                  color: p.username == currentUser ? 'slateblue' : 'tomato',
+                  color: p.username === currentUser ? 'slateblue' : 'tomato',
                   cursor: 'pointer',
                 }}
               />
