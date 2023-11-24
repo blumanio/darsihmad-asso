@@ -16,5 +16,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "resolutions": {
+    "node":"16.20"
+  }
 }
