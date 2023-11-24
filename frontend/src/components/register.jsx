@@ -6,7 +6,7 @@ import axios from 'axios'
 import CancelIcon from '@material-ui/icons/Cancel'
 
 export default function Register({ setShowRegister }) {
-  const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api/'
+  const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api'
 
   const [success, setSuccess] = useState(false)
   const [failure, setFailure] = useState(false)

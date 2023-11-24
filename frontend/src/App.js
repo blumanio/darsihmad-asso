@@ -22,7 +22,7 @@ function App() {
   const [showLogin, setShowLogin] = useState(false)
   console.log('local storage ', myStorage)
   //const currentUser = 'mohamed'
-  const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api/'
+  const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api'
   useEffect(() => {
     const getPins = async () => {
       try {

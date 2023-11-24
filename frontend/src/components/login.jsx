@@ -6,7 +6,7 @@ import axios from 'axios'
 import CancelIcon from '@material-ui/icons/Cancel'
 
 export default function Login({ setShowLogin, myStorage, setCurrentUser }) {
-  const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api/'
+  const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api'
 
   const [failure, setFailure] = useState(false)
   const nameRef = useRef()
