@@ -88,36 +88,36 @@ function App() {
       >
         {pins.map((p) => (
           <>
-            <Marker longitude={p.long} latitude={p.lat} anchor="bottom">
+            <Marker longitude={p?.long} latitude={p?.lat} anchor="bottom">
               <RoomIcon
-                onClick={() => handleMarkerClick(p._id)}
+                onClick={() => handleMarkerClick(p?._id)}
                 style={{
                   fontSize: visualViewport.zoom * 7,
-                  color: p.username === currentUser ? 'slateblue' : 'tomato',
+                  color: p?.username === currentUser ? 'slateblue' : 'tomato',
                   cursor: 'pointer',
                 }}
               />
             </Marker>
-            {p._id === currentPlaceId && (
+            {p?._id === currentPlaceId && (
               <Popup
-                longitude={p.long}
-                latitude={p.lat}
+                longitude={p?.long}
+                latitude={p?.lat}
                 anchor="left"
                 closeButton={true}
                 closeOnClick={true}
               >
                 <div className="card">
-                  <label>{p.title}</label>
+                  <label>{p?.title}</label>
                   <h1 className="place"> location test </h1>
                   <label> Review</label>
-                  <p className="desc"> {p.desc} </p>
+                  <p className="desc"> {p?.desc} </p>
                   <div className="stars"></div>
 
                   <label>Information</label>
                   <span className="username">
-                    created by <b>{p.username}</b>
+                    created by <b>{p?.username}</b>
                   </span>
-                  <span className="date"> {format(p.createdAt)} </span>
+                  <span className="date"> {format(p?.createdAt)} </span>
 
                   <span></span>
 
