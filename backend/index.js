@@ -7,7 +7,13 @@ const pinRoute = require('./routes/pins')
 const userRoute = require('./routes/users')
 
 dotenv.config()
-app.use(cors())
+app.use(
+  cors({
+    origin: 'https://darsihmad-asso-fe.onrender.com/',
+    headers: ['Content-Type'],
+    credentials: true,
+  })
+)
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log('MONGODB CONNECTED'))
