@@ -20,7 +20,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "resolutions": {
-    "node":"16.20"
+  "engines": {
+    "node": ">=16.20.1"
   }
 }

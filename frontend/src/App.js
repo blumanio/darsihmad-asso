@@ -164,9 +164,24 @@ function App() {
           </Popup>
         )}
         {currentUser ? (
-          <button className="button logout" onClick={handleLogout}>
-            logout
-          </button>
+          <>
+            <span
+              style={{
+                position: 'absolute',
+                background: 'teal',
+                color: 'white',
+                top: '10px',
+                left:'10px',
+                fontSize:'700'
+              }}
+            >
+              {' '}
+              👋 Hi! {currentUser}
+            </span>
+            <button className="button logout" onClick={handleLogout}>
+              logout
+            </button>
+          </>
         ) : (
           <div className="buttons">
             <button
