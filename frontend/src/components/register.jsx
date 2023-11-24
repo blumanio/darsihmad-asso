@@ -5,7 +5,9 @@ import RoomIcon from '@material-ui/icons/Room'
 import axios from 'axios'
 import CancelIcon from '@material-ui/icons/Cancel'
 
-export default function Register({setShowRegister}) {
+export default function Register({ setShowRegister }) {
+  const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api/'
+
   const [success, setSuccess] = useState(false)
   const [failure, setFailure] = useState(false)
   const nameRef = useRef()
@@ -19,7 +21,7 @@ export default function Register({setShowRegister}) {
       password: passwordRef.current.value,
     }
     try {
-      await axios.post('/users/register', newUser)
+      await axios.post(`${BASE_URL}/users/register`, newUser)
       setSuccess(true)
       setFailure(false)
     } catch (error) {

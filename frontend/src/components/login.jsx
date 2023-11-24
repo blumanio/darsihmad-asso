@@ -6,6 +6,8 @@ import axios from 'axios'
 import CancelIcon from '@material-ui/icons/Cancel'
 
 export default function Login({ setShowLogin, myStorage, setCurrentUser }) {
+  const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api/'
+
   const [failure, setFailure] = useState(false)
   const nameRef = useRef()
   const passwordRef = useRef()
@@ -16,7 +18,7 @@ export default function Login({ setShowLogin, myStorage, setCurrentUser }) {
       password: passwordRef.current.value,
     }
     try {
-      const res = await axios.post('/users/login', user)
+      const res = await axios.post(`${BASE_URL}/users/login `, user)
       myStorage?.setItem('user', res.data.username)
       console.log('local storage ', myStorage)
       setCurrentUser(res.data.username)

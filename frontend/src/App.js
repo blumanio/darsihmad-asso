@@ -22,10 +22,11 @@ function App() {
   const [showLogin, setShowLogin] = useState(false)
   console.log('local storage ', myStorage)
   //const currentUser = 'mohamed'
+  const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api/'
   useEffect(() => {
     const getPins = async () => {
       try {
-        const res = await axios.get('/pins')
+        const res = await axios.get(`${BASE_URL}/pins `)
         setPins(res.data)
       } catch (err) {
         console.log(err)
@@ -60,7 +61,7 @@ function App() {
       long: newPlace.long,
     }
     try {
-      const res = await axios.post('/pins', newPin)
+      const res = await axios.post(`${BASE_URL}/pins `, newPin)
       setPins([...pins, res.data])
       setNewPlace(null)
     } catch (error) {
@@ -171,8 +172,8 @@ function App() {
                 background: 'teal',
                 color: 'white',
                 top: '10px',
-                left:'10px',
-                fontSize:'700'
+                left: '10px',
+                fontSize: '700',
               }}
             >
               {' '}
