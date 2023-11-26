@@ -15,15 +15,6 @@ app.use(
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   })
 );
-var corsOptions = {
-  origin: function (origin, callback) {
-    // db.loadOrigins is an example call to load
-    // a list of origins from a backing database
-    db.loadOrigins(function (error, origins) {
-      callback(error, origins)
-    })
-  }
-}
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log('MONGODB CONNECTED'))

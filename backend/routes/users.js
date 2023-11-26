@@ -2,6 +2,16 @@ const router = require('express').Router()
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
+router.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+  res.header('Access-Control-Allow-Headers', 'Content-Type')
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://darsihmad-asso-fe.onrender.com'
+  )
+  res.status(204).send()
+})
+
 //register
 router.post('/register', async (req, res) => {
   try {
@@ -23,12 +33,7 @@ router.post('/register', async (req, res) => {
     res.status(500).json(err)
   }
 })
-// Handle CORS preflight request
-router.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
-  res.header('Access-Control-Allow-Headers', 'Content-Type')
-  res.status(204).send()
-})
+
 // login
 router.post('/login', async (req, res) => {
   try {
