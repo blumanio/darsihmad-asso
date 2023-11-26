@@ -1,28 +1,35 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-const cors = require('cors')
-const app = express()
-const pinRoute = require('./routes/pins')
-const userRoute = require('./routes/users')
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const app = express();
+const pinRoute = require('./routes/pins');
+const userRoute = require('./routes/users');
 
-dotenv.config()
+dotenv.config();
+
+// CORS middleware setup
 app.use(
   cors({
     origin: 'https://darsihmad-asso-fe.onrender.com',
-    headers: ['Content-Type'],
+    methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
     credentials: true,
-    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   })
 );
+
+// MongoDB connection
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MONGODB CONNECTED'))
-  .catch((err) => console.log(err))
+  .catch((err) => console.error(err));
 
-  app.use('/api/users', cors(), userRoute);
-  app.use('/api/pins', cors(), pinRoute);
+// Routes setup
+app.use('/api/users', cors(), userRoute);
+app.use('/api/pins', cors(), pinRoute);
 
-app.listen(8800, () => {
-  console.log('backend server running')
-})
+// Start the server
+const PORT = process.env.PORT || 8800;
+app.listen(PORT, () => {
+  console.log(`Backend server running on port ${PORT}`);
+});
