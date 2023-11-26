@@ -9,12 +9,12 @@ const userRoute = require('./routes/users')
 dotenv.config()
 app.use(
   cors({
-    origin: 'https://darsihmad-asso-fe.onrender.com/',
+    origin: 'https://darsihmad-asso-fe.onrender.com',
     headers: ['Content-Type'],
     credentials: true,
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   })
-)
+);
 var corsOptions = {
   origin: function (origin, callback) {
     // db.loadOrigins is an example call to load
@@ -29,8 +29,8 @@ mongoose
   .then(() => console.log('MONGODB CONNECTED'))
   .catch((err) => console.log(err))
 
-app.use('/api/users',cors(corsOptions), userRoute)
-app.use('/api/pins', cors(corsOptions),pinRoute)
+  app.use('/api/users', cors(), userRoute);
+  app.use('/api/pins', cors(), pinRoute);
 
 app.listen(8800, () => {
   console.log('backend server running')
