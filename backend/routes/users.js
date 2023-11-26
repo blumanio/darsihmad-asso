@@ -34,7 +34,6 @@ router.post('/login', async (req, res) => {
     'Access-Control-Allow-Origin',
     'https://darsihmad-asso-fe.onrender.com'
   )
-  res.status(204).send()
   try {
     // find user
     const user = await User.findOne({ username: req.body.username })
