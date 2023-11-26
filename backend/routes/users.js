@@ -23,7 +23,12 @@ router.post('/register', async (req, res) => {
     res.status(500).json(err)
   }
 })
-
+// Handle CORS preflight request
+router.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+  res.header('Access-Control-Allow-Headers', 'Content-Type')
+  res.status(204).send()
+})
 // login
 router.post('/login', async (req, res) => {
   try {
