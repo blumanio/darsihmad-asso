@@ -2,15 +2,7 @@ const router = require('express').Router()
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
-router.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
-  res.header('Access-Control-Allow-Headers', 'Content-Type')
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://darsihmad-asso-fe.onrender.com'
-  )
-  res.status(204).send()
-})
+console.log("--- fix --- cors --- psot --- 777777777777777777777777777")
 
 //register
 router.post('/register', async (req, res) => {
@@ -18,14 +10,14 @@ router.post('/register', async (req, res) => {
     // generate new pwd
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(req.body.password, salt)
-
+    
     //create new user
     const newUser = new User({
       username: req.body.username,
       email: req.body.email,
       password: hashedPassword,
     })
-
+    
     // save user and send response
     const user = await newUser.save()
     res.status(200).json(user)
@@ -36,6 +28,13 @@ router.post('/register', async (req, res) => {
 
 // login
 router.post('/login', async (req, res) => {
+  req.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+  req.header('Access-Control-Allow-Headers', 'Content-Type')
+  req.header(
+    'Access-Control-Allow-Origin',
+    'https://darsihmad-asso-fe.onrender.com'
+  )
+  res.status(204).send()
   try {
     // find user
     const user = await User.findOne({ username: req.body.username })
