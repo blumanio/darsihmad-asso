@@ -2,8 +2,6 @@ const router = require('express').Router()
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
-console.log('--- fix --- cors --- psot --- 777777777777777777777777777')
-
 // Register route
 router.post('/register', async (req, res) => {
   try {
@@ -29,10 +27,6 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body?.username })
-    console.log("user",user)
-    console.log("req.body?",req.body)
-
-
     if (!user) {
       return res
         .status(400)
