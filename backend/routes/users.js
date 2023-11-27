@@ -11,7 +11,7 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, salt)
 
     const newUser = new User({
-      username: req.body.username,
+      username: req.body?.username,
       email: req.body.email,
       password: hashedPassword,
     })
@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
 // Login route
 router.post('/login', async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username })
+    const user = await User.findOne({ username: req.body?.username })
 
     if (!user) {
       return res
@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
         .json({ error: 'Invalid Credentials', details: 'Wrong password' })
     }
 
-    res.status(200).json({ _id: user._id, username: user.username })
+    res.status(200).json({ _id: user._id, username: user?.username })
   } catch (error) {
     console.error(error)
     res
