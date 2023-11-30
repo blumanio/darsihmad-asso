@@ -20,7 +20,6 @@ function App() {
   const [rating, setRating] = useState(0)
   const [showRegister, setShowRegister] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
-  console.log('local storage ', myStorage)
   //const currentUser = 'mohamed'
   const BASE_URL = 'https://darsihmad-asso-be1.onrender.com/api'
   useEffect(() => {
@@ -34,10 +33,8 @@ function App() {
     }
     getPins()
   }, [])
-  const handleMarkerClick = (id) => {
-    setCurrentPlaceId(id)
-    console.log('typeof Id', typeof id, id)
-    console.log('typeof currentPlaceId', typeof currentPlaceId, currentPlaceId)
+  const handleMarkerClick = (p) => {
+    setCurrentPlaceId(p)
   }
 
   const handleDblClick = (e) => {
@@ -86,11 +83,11 @@ function App() {
         mapStyle="mapbox://styles/mapbox/streets-v9"
         onDblClick={(e) => handleDblClick(e)}
       >
-        {pins.map((p) => (
+        {pins.map((p, key) => (
           <>
             <Marker longitude={p?.long} latitude={p?.lat} anchor="bottom">
               <RoomIcon
-                onClick={() => handleMarkerClick(p?._id)}
+                onClick={() => handleMarkerClick(p._id)}
                 style={{
                   fontSize: visualViewport.zoom * 7,
                   color: p?.username === currentUser ? 'slateblue' : 'tomato',
@@ -98,15 +95,15 @@ function App() {
                 }}
               />
             </Marker>
-            {p?._id === currentPlaceId && (
+            {currentPlaceId === p._id && (
               <Popup
                 longitude={p?.long}
                 latitude={p?.lat}
                 anchor="left"
                 closeButton={true}
-                closeOnClick={true}
+                closeOnClick={false}
               >
-                <div className="card">
+                <div className="card" id={key}>
                   <label>{p?.title}</label>
                   <h1 className="place"> location test </h1>
                   <label> Review</label>
